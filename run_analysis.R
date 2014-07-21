@@ -1,5 +1,10 @@
 ###############################################################################
-## Merges the training and the test sets to create one data set.
+## GetData Course Project
+###############################################################################
+
+
+###############################################################################
+## 1. Merges the training and the test sets to create one data set.
 ###############################################################################
 
 # Read test files
@@ -117,7 +122,7 @@ tidydata <- as.data.frame(tidydata)
 write.csv(tidydata, file = "tidydata.csv")
 
 ###############################################################################
-## Appendix: Clean up (Remove Uneeded Objects
+## Appendix: Clean up (Remove Un-needed Objects
 ###############################################################################
 
 rm(OneDataSet.g, 
