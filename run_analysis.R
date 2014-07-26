@@ -118,7 +118,7 @@ tidydata <- summarise_each(OneDataSet.g, funs(mean))
 tidydata <- as.data.frame(tidydata)
 
 # Write data frame to disk
-write.csv(tidydata, file = "tidydata.csv")
+write.csv(tidydata, file = "tidydata.txt")
 
 ###############################################################################
 ## Appendix: Clean up (Remove Un-needed Objects
@@ -133,7 +133,3 @@ rm(OneDataSet.g,
    findmeanFreqlogi,
    findmeanlogi,
    findstdlogi)
-
-
-
-str(tidydata)
