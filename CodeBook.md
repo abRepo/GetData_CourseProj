@@ -12,7 +12,10 @@ Process Overview:
 6. Create tidy data set with the average of each variable by activity/subject.
 7. Clean up project (remove unecessary objects)
 
-Tidy Data Set Variable List
+## Tidy Data Set Variable List
+
+The variable names use lower case letters and complete descriptions to abide by the tidy data set naming guidelines.  The variables are the average value of the mean and standard deviation of accelerator and gyroscope 3-axis signals.
+
 - X                          : int  1 2 3 4 5 6 7 8 9 10 ...
 - subjectnum                 : int  1 1 1 1 1 1 2 2 2 2 ...
 - activity                   : Factor w/ 6 levels 
