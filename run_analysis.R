@@ -24,11 +24,11 @@ names(features) <- c("RowId", "FeatureName")
 
 # Combine train and test files
 subject <- rbind(subject_test, subject_train)
-names(subject) <- "SubjectNum"
+names(subject) <- "subjectnum"
 rm(subject_test, subject_train)
 
 y <- rbind(y_test, y_train)
-names(y) <- "Activity"
+names(y) <- "activity"
 rm(y_test, y_train)
 
 X <- rbind(X_test, X_train)
@@ -54,7 +54,7 @@ col2keep <- findmeanlogi | findstdlogi
 # Keep as long as it is not meanFreq
 col2keep <- col2keep & !findmeanFreqlogi
 
-# Keep first two variables: SubjectNum and Activity
+# Keep first two variables: subjectnum and activity
 col2keep[c(1,2)] <- TRUE
 
 # Extract first two columns and all columns with mean() or std()
@@ -64,18 +64,18 @@ OneDataSet <- OneDataSet[,col2keep]
 ## 3. Uses descriptive activity names to name the activities in the data set.
 ###############################################################################
 
-# Activity 1 is walking
-OneDataSet[OneDataSet$Activity == "1","Activity"] <- "walking"
-# Activity 2 is walking upstairs
-OneDataSet[OneDataSet$Activity == "2","Activity"] <- "walking upstairs"
-# Activity 3 is walking upstairs
-OneDataSet[OneDataSet$Activity == "3","Activity"] <- "walking downstairs"
-# Activity 4 is walking upstairs
-OneDataSet[OneDataSet$Activity == "4","Activity"] <- "sitting"
-# Activity 5 is walking upstairs
-OneDataSet[OneDataSet$Activity == "5","Activity"] <- "standing"
-# Activity 6 is walking upstairs
-OneDataSet[OneDataSet$Activity == "6","Activity"] <- "laying"
+# activity 1 is walking
+OneDataSet[OneDataSet$activity == "1","activity"] <- "walking"
+# activity 2 is walking upstairs
+OneDataSet[OneDataSet$activity == "2","activity"] <- "walking upstairs"
+# activity 3 is walking upstairs
+OneDataSet[OneDataSet$activity == "3","activity"] <- "walking downstairs"
+# activity 4 is walking upstairs
+OneDataSet[OneDataSet$activity == "4","activity"] <- "sitting"
+# activity 5 is walking upstairs
+OneDataSet[OneDataSet$activity == "5","activity"] <- "standing"
+# activity 6 is walking upstairs
+OneDataSet[OneDataSet$activity == "6","activity"] <- "laying"
 
 
 ###############################################################################
@@ -88,15 +88,14 @@ names(OneDataSet) <- gsub("\\(\\)", "", names(OneDataSet))
 # Substitute "-" - Remove
 names(OneDataSet) <- gsub("\\-", "", names(OneDataSet))
 
-# Substitute "mean" and "std" - Replace with "Mean" and "Std"
-names(OneDataSet) <- gsub("mean", "Mean", names(OneDataSet))
-names(OneDataSet) <- gsub("std", "Std", names(OneDataSet))
-
 # Substitute "t..." and  "f..." - Replace with "Time.." and "Freq..."
-names(OneDataSet) <- gsub("tBody", "TimeBody", names(OneDataSet))
-names(OneDataSet) <- gsub("fBody", "FreqBody", names(OneDataSet))
-names(OneDataSet) <- gsub("tGravity", "TimeGravity", names(OneDataSet))
-names(OneDataSet) <- gsub("fGravity", "FreqGravity", names(OneDataSet))
+names(OneDataSet) <- gsub("tBody", "timebody", names(OneDataSet))
+names(OneDataSet) <- gsub("fBody", "freqbody", names(OneDataSet))
+names(OneDataSet) <- gsub("tGravity", "timegravity", names(OneDataSet))
+names(OneDataSet) <- gsub("fGravity", "freqgravity", names(OneDataSet))
+
+# Ensure names are lower case
+names(OneDataSet) <- tolower(names(OneDataSet))
 
 # Check Variable Names
 # names(OneDataSet)
@@ -110,7 +109,7 @@ names(OneDataSet) <- gsub("fGravity", "FreqGravity", names(OneDataSet))
 library(dplyr)
 
 # First we define the group by columns
-OneDataSet.g <- group_by(OneDataSet, SubjectNum, Activity)
+OneDataSet.g <- group_by(OneDataSet, subjectnum, activity)
 
 # Next we compute the means of the non-group columns
 tidydata <- summarise_each(OneDataSet.g, funs(mean))
@@ -134,3 +133,7 @@ rm(OneDataSet.g,
    findmeanFreqlogi,
    findmeanlogi,
    findstdlogi)
+
+
+
+str(tidydata)
