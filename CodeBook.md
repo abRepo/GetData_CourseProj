@@ -4,13 +4,13 @@ Code Book for Getting and Cleaning Data Course Project
 Instructions for running the analysis.
 
 Process Overview:
-1. Manually Download Datasets.
-2. Merges the training and the test sets to create one data set.
-3. Extract mean and standard deviation measurements.
-4. Assign descriptive activity names.
-5. Label with descriptive variable names.
-6. Create tidy data set with the average of each variable by activity/subject.
-7. Clean up project (remove unecessary objects)
+1 Manually Download Datasets.
+2 Merges the training and the test sets to create one data set.
+3 Extract mean and standard deviation measurements.
+4 Assign descriptive activity names.
+5 Label with descriptive variable names.
+6 Create tidy data set with the average of each variable by activity/subject.
+7 Clean up project (remove unecessary objects)
 
 ## Tidy Data Set Variable List
 
